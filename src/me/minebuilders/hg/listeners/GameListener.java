@@ -143,14 +143,14 @@ public class GameListener implements Listener {
 						foundno = false;
 						Location l = e.getLocation();
 						int range = (int) p.getLocation().distance(l);
-						Util.msg(p, ("&3" + ((Player)e).getName()) + "&b is " + range + " blocks away from you:&3 " + getDirection(p.getLocation().getBlock(), l.getBlock()));
+						Util.msg(p, ("&3" + ((Player)e).getName()) + "&b esta a" + range + " bloques de distancia:&3 " + getDirection(p.getLocation().getBlock(), l.getBlock()));
 						i.setItemMeta(im);
 						p.updateInventory();
 						return;
 					} 
 				}
 				if (foundno)
-					Util.msg(p, ChatColor.RED + "Couldn't locate any nearby players!");
+					Util.msg(p, ChatColor.RED + "No se pudieron encontrar jugadores cerca!");
 
 			}
 		}
@@ -163,21 +163,21 @@ public class GameListener implements Listener {
 		float cal = (y * 10);
 		int c = (int) cal;
 		if (c<=1 && c>=-1) {
-			return "South";
+			return "Sur";
 		} else if (c>-14 && c<-1) {
-			return "SouthWest";
+			return "Sudeste";
 		} else if (c>=-17 && c<=-14) {
-			return "West";
+			return "Oeste";
 		} else if (c>-29 && c<-17) {
-			return "NorthWest";
+			return "Noroeste";
 		} else if (c>17 && c<29) {
-			return "NorthEast";
+			return "Norest";
 		} else if (c<=17 && c>=14) {
-			return "East";
+			return "Este";
 		} else if (c>1 && c<14) {
-			return "SouthEast";
+			return "Sudeste";
 		}  else if (c<=29 && c>=-29) {
-			return "North";
+			return "Norte";
 		} else {
 			return "UnKnown";
 		}
@@ -212,7 +212,7 @@ public class GameListener implements Listener {
 				if (g.getStatus() != Status.RUNNING) {
 					event.setCancelled(true);
 				} else if (pd.isOnTeam(p.getName()) && damager instanceof Player && pd.getTeam().isOnTeam(((Player)damager).getName())) {
-					Util.scm(((Player)damager), "&c" + p.getName() + " is on your team!");
+					Util.scm(((Player)damager), "&c" + p.getName() + " esta en tu equipo!");
 					event.setCancelled(true);
 				} else if (event.isCancelled()) event.setCancelled(false);
 			}
@@ -226,7 +226,7 @@ public class GameListener implements Listener {
 			Status st = plugin.players.get(p.getName()).getGame().getStatus();
 			if (st == Status.WAITING || st == Status.COUNTDOWN) {
 				event.setCancelled(true);
-				p.sendMessage(ChatColor.RED + "You cannot interact until the game has started!");
+				p.sendMessage(ChatColor.RED + "No puedes interactuar hasta que el juego comienze!");
 			}
 		}
 	}
@@ -241,13 +241,13 @@ public class GameListener implements Listener {
 				if (sign.getLine(0).equals(ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "HungerGames")) {
 					Game game = HG.manager.getGame(sign.getLine(1).substring(2));
 					if (game == null) {
-						Util.msg(p, ChatColor.RED + "This arena does not exist!");
+						Util.msg(p, ChatColor.RED + "Esa arena no existe!");
 						return;
 					} else {
 						if (p.getItemInHand().getType() == Material.AIR) {
 							game.join(p);
 						} else {
-							Util.msg(p, ChatColor.RED + "Click the sign with your hand!");
+							Util.msg(p, ChatColor.RED + "Click en el cartel con la mano!");
 						}
 					}
 				} 
@@ -273,7 +273,7 @@ public class GameListener implements Listener {
 				
 				if (g.getStatus() == Status.RUNNING || g.getStatus() == Status.BEGINNING) {
 					if (!Config.blocks.contains(b.getType().getId())) {
-						p.sendMessage(ChatColor.RED + "You cannot edit this block type!");
+						p.sendMessage(ChatColor.RED + "No puedes editar este bloque!");
 						event.setCancelled(true);
 						return;
 					} else {
@@ -281,7 +281,7 @@ public class GameListener implements Listener {
 						return;
 					}
 				} else {
-					p.sendMessage(ChatColor.RED + "The game is not running!");
+					p.sendMessage(ChatColor.RED + "El juego no esta corriendo!");
 					event.setCancelled(true);
 					return;
 				}
@@ -305,7 +305,7 @@ public class GameListener implements Listener {
 				Game g = plugin.players.get(p.getName()).getGame();
 				if (g.getStatus() == Status.RUNNING) {
 					if (!Config.blocks.contains(b.getType().getId())) {
-						p.sendMessage(ChatColor.RED + "You cannot edit this block type!");
+						p.sendMessage(ChatColor.RED + "No puedes editar este bloque");
 						event.setCancelled(true);
 						return;
 					} else {
@@ -313,7 +313,7 @@ public class GameListener implements Listener {
 						return;
 					}
 				} else {
-					p.sendMessage(ChatColor.RED + "The game is not running!");
+					p.sendMessage(ChatColor.RED + "El juego no esta corriendo!");
 					event.setCancelled(true);
 					return;
 				}

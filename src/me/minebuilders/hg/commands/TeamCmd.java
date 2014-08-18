@@ -33,7 +33,7 @@ public class TeamCmd extends BaseCmd {
 				Player p = Bukkit.getPlayer(args[2]);
 
 				if (p == null || !g.getPlayers().contains(p.getName())) {
-					Util.msg(player, "&c" + args[2] + " Is not available!");
+					Util.msg(player, "&c" + args[2] + " No esta disponible!");
 					return true;
 				}
 
@@ -42,27 +42,27 @@ public class TeamCmd extends BaseCmd {
 					Team t = pd.getTeam();
 
 					if (!t.getLeader().equalsIgnoreCase(player.getName())) {
-						Util.msg(player, "&cOnly the leader can invite other players!");
+						Util.msg(player, "&cSolamente el lider puede invitar otros jugadores!");
 						return true;
 					}
 					if (t.isOnTeam(p.getName())) {
-						Util.msg(player, "&c" + args[2] + " &3is already on a team!");
+						Util.msg(player, "&c" + args[2] + " &3ya esta en un equipo!");
 						return true;
 					}
 
 					if ((t.getPlayers().size() + t.getPenders().size()) >= Config.maxTeam) {
-						Util.msg(player, "&cYou've hit the max team limit!");
+						Util.msg(player, "&cYa has alcanzado el limite de invitaciones!");
 						return true;
 					}
 
 					HG.plugin.players.get(p.getName()).setTeam(t);
 					t.invite(p);
-					Util.msg(player, "&c" + p.getName() + " &3Has been invited!");
+					Util.msg(player, "&c" + p.getName() + " &3Ha sido invitado!");
 					return true;
 				}
 
 				if (HG.plugin.players.get(p.getName()).isOnTeam(p.getName())) {
-					Util.msg(player, "&c" + args[2] + " &3is already on a team!");
+					Util.msg(player, "&c" + args[2] + " &3ya esta en un equipo!");
 					return true;
 				}
 
@@ -70,17 +70,17 @@ public class TeamCmd extends BaseCmd {
 				HG.plugin.players.get(p.getName()).setTeam(t);
 				pd.setTeam(t);
 				t.invite(p);
-				Util.msg(player, "&c" + p.getName() + " &3Has been invited!");
+				Util.msg(player, "&c" + p.getName() + " &3Ha sido invitado!");
 				return true;
 			} else {
-				Util.msg(player, "&cWrong Usage: &3/hg &bteam invite <&cname&b>");
+				Util.msg(player, "&cUso: &3/hg &bteam invite <&cnombre&b>");
 			}
 		} else if (args[1].equalsIgnoreCase("accept")) {
 
 			Team t = HG.plugin.players.get(player.getName()).getTeam();
 
 			if (t == null) {
-				Util.msg(player, "&cYou have no pending invites...");
+				Util.msg(player, "&cNo tienes invitaciones pendientes...");
 				return true;
 			}
 			if (t.getPenders().contains(player.getName())) {
@@ -91,7 +91,7 @@ public class TeamCmd extends BaseCmd {
 
 					if (p != null) {
 						Util.scm(p, "&6*&b&m                                                                             &6*");
-						Util.scm(p, ChatColor.WHITE + player.getName() + " &3Just joined your team!");
+						Util.scm(p, ChatColor.WHITE + player.getName() + " &3Se ha unido a tu equipo!");
 						Util.scm(p, "&6*&b&m                                                                             &6*");
 					}
 					return true;

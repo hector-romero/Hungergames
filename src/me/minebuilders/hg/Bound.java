@@ -55,14 +55,14 @@ public class Bound {
 		}
 	}
 
-	public ArrayList<Location> getBlocks(Material type) {
+	public ArrayList<Location> getBlocks(Material type, Material type2) {
 		World w = Bukkit.getWorld(world);
 		ArrayList <Location> array = new ArrayList<Location>();
 		for (int x3 = x; x3 <= x2; x3++) {
 			for (int y3 = y; y3 <= y2; y3++) {
 				for (int z3 = z; z3 <= z2; z3++) {
 					Block b = w.getBlockAt(x3, y3, z3);
-					if (b.getType() == type) {
+					if (b.getType() == type || b.getType() == type2) {
 						array.add(b.getLocation());
 					}
 				}

@@ -17,7 +17,7 @@ public class ReloadCmd extends BaseCmd {
 	public boolean run() {
 		Util.msg(player, "&l&aAttempting to for reload Hungergames!");
 		HG.plugin.stopAll();
-		HG.arenaconfig.saveCustomConfig();
+//		HG.arenaconfig.saveCustomConfig();
 		HG.arenaconfig.reloadCustomConfig();
 		HG.arenaconfig.load();
 		Util.msg(player, "&6 - &eArenas have been reloaded!");

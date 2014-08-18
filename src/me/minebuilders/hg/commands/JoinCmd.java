@@ -11,20 +11,20 @@ public class JoinCmd extends BaseCmd {
 		cmdName = "join";
 		forceInGame = false;
 		argLength = 2;
-		usage = "<&carena-name&b>";
+		usage = "<&carena&b>";
 	}
 
 	@Override
 	public boolean run() {
 
 		if (HG.plugin.players.containsKey(player.getName())) {
-			Util.msg(player, "&cYou're already in a game!");
+			Util.msg(player, "&cYa estas en un juego!");
 		} else {
 			Game g = HG.manager.getGame(args[1]);
 			if (g != null && !g.getPlayers().contains(player.getName())) {
 				g.join(player);
 			} else {
-				Util.msg(player, "&cThis arena does not exist!");
+				Util.msg(player, "&cEsa arena no existe!");
 			}
 		}
 		return true;

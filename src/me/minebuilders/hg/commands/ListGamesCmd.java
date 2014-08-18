@@ -15,7 +15,7 @@ public class ListGamesCmd extends BaseCmd {
 
 	@Override
 	public boolean run() {
-		Util.scm(sender, "&3&l Games:");
+		Util.scm(sender, "&3&l Arenas:");
 		for (Game g : HG.plugin.games) {
 			Util.scm(sender, " &4 - &3" + g.getName() + "&4:&3" + g.getStatus().getName());
 		}

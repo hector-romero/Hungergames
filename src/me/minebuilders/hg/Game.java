@@ -140,7 +140,7 @@ public class Game {
 
 	public void setChests() {
 		chests.clear();
-		for (Location bl : b.getBlocks(Material.CHEST)) {
+		for (Location bl : b.getBlocks(Material.CHEST, Material.TRAPPED_CHEST)) {
 			chests.add(bl);
 		}
 	}
@@ -177,9 +177,9 @@ public class Game {
 
 	public void join(Player p) {
 		if (status != Status.WAITING && status != Status.STOPPED && status != Status.COUNTDOWN) {
-			p.sendMessage(ChatColor.RED + "This arena is not ready! Please wait before joining!");
+			p.sendMessage(ChatColor.RED + "Esta arena no esta lista. Espera un momento para unirte!");
 		} else if (maxplayers <= players.size()) {
-			p.sendMessage(ChatColor.RED + name + " is currently full!");
+			p.sendMessage(ChatColor.RED + name + " esta completa!");
 		} else {
 			if (p.isInsideVehicle()) {
 				p.leaveVehicle();
@@ -192,7 +192,7 @@ public class Game {
 			if (players.size() >= minplayers && status.equals(Status.WAITING)) {
 				startPreGame();
 			} else if (status == Status.WAITING) {
-				msgDef("&4(&3"+p.getName() + "&b Has joined the game"+(minplayers-players.size()<= 0?"!":": "+(minplayers-players.size())+" players to start!")+"&4)");
+				msgDef("&4(&3"+p.getName() + "&b Se ha unido al juego"+(minplayers-players.size()<= 0?"!":": "+(minplayers-players.size())+" jugadores para iniciar!")+"&4)");
 			}
 			kitHelp(p);
 			if (players.size() == 1)
@@ -204,12 +204,9 @@ public class Game {
 	}
 
 	public void kitHelp(Player p) {
-		String kit = HG.plugin.kit.getKitList();
 		Util.scm(p, "&8     ");
-		Util.scm(p, "&9&l>----------[&b&lWelcome to HungerGames&9&l]----------<");
-		Util.scm(p, "&9&l - &bPick a kit using &c/hg kit <kit-name>");
-		Util.scm(p, "&9&lKits:&b" + kit);
-		Util.scm(p, "&9&l>------------------------------------------<");
+		Util.scm(p, "&9&l>----------[&b&lBienvenido a HungerGames&9&l]----------<");
+        Util.scm(p, "&8     ");
 	}
 
 	public void respawnAll() {
@@ -326,10 +323,10 @@ public class Game {
 
 			s.setLine(0, ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "HungerGames");
 			s.setLine(1, ChatColor.BOLD + name);
-			s.setLine(2, ChatColor.BOLD + "Click To Join");
-			s1.setLine(0, ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "Game Status");
+			s.setLine(2, ChatColor.BOLD + "Click para Unirse");
+			s1.setLine(0, ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "Estado");
 			s1.setLine(1, status.getName());
-			s2.setLine(0, ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "Alive");
+			s2.setLine(0, ChatColor.DARK_BLUE + "" + ChatColor.BOLD + "Jugadores");
 			s2.setLine(1, ChatColor.BOLD + "" + 0 + "/" + maxplayers);
 			s.update(true);
 			s1.update(true);
@@ -379,11 +376,11 @@ public class Game {
 				Vault.economy.depositPlayer(s, db);
 				Player p = Bukkit.getPlayer(s);
 				if (p != null)
-				Util.msg(p, "&aYou won " + db + " for winning HungerGames!");
+				Util.msg(p, "&aHas ganado " + db + " por ganar HungerGames!");
 			}
 		}
 
-		Util.broadcast("&l&3" + Util.translateStop(win) + " &l&bWon HungerGames at arena " + name + "!");
+		Util.broadcast("&l&3" + Util.translateStop(win) + " &l&bGano HungerGames en la arena " + name + "!");
 		if (!blocks.isEmpty()) {
 			new Rollback(this);
 		} else {
@@ -406,7 +403,7 @@ public class Game {
 				stop();
 			}
 		} else if (status == Status.WAITING) {
-			msgDef("&3&l"+p.getName() + "&l&c Has left the game"+(minplayers-players.size()<= 0?"!":": "+(minplayers-players.size())+" players to start!"));
+			msgDef("&3&l"+p.getName() + "&l&c Ha dejado el juego"+(minplayers-players.size()<= 0?"!":": "+(minplayers-players.size())+" jugadores para iniciar!"));
 		}
 		updateLobbyBlock();
 		sb.restoreSB(p);

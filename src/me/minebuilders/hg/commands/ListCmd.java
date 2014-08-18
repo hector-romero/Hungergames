@@ -21,7 +21,7 @@ public class ListCmd extends BaseCmd {
 			p = p + "&3, &b" + s;
 		}
 		p = p.substring(3);
-		Util.scm(player, "&3Players:" + p);
+		Util.scm(player, "&3Jugadores:" + p);
 		return true;
 	}
 }

@@ -15,8 +15,9 @@ public class StartingTask implements Runnable {
 	public StartingTask(Game g) {
 		this.timer = 30;
 		this.game = g;
-		Util.broadcast("&b&l Arena " + g.getName() + " will begin in 30 seconds!");
-		Util.broadcast("&b&l Use:&3&l /hg join " + g.getName() + "&b&l to join!");
+		Util.broadcast("&b&l Arena " + g.getName() + " comenzara en 30 segundos!");
+		Util.broadcast("&b&l Anda a:&3&l /warp hg &b&l para unirte!");
+		Util.broadcast("&b&l O usa:&3&l /hg join " + g.getName());
 
 		this.id = Bukkit.getScheduler().scheduleSyncRepeatingTask(HG.plugin, this, 5 * 20L, 5 * 20L);
 	}
