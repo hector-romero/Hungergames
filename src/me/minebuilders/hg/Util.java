@@ -83,7 +83,7 @@ public class Util {
 		for (String s : win) {
 			count++;
 			if (count == 1) bc = s;
-			else if (count == win.size()) bc = bc + ", and " + s;
+			else if (count == win.size()) bc = bc + ", y " + s;
 			else bc = bc + ", " + s;
 		}
 		return bc;

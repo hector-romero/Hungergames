@@ -29,7 +29,7 @@ public class FreeRoamTask implements Runnable {
 
 	@Override
 	public void run() {
-		game.msgAll("&c&lEl tiempo de gracias se acabo, PVP habilitado!");
+		game.msgAll("&c&lEl tiempo de gracia se acabo, PVP habilitado!");
 		game.startGame();
 	}
 

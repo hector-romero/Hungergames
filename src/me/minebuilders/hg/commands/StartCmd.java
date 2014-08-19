@@ -21,9 +21,9 @@ public class StartCmd extends BaseCmd {
 		Game g = HG.manager.getGame(args[1]);
 		if (g != null) {
 			g.startPreGame();
-			Util.scm(sender, "&3" + args[1] + "&b is now starting!");
+			Util.scm(sender, "&3" + args[1] + "&b esta comenzando!");
 		} else {
-			sender.sendMessage(ChatColor.RED + "This game does not exist!");
+			sender.sendMessage(ChatColor.RED + "El juego no existe!");
 		}
 		return true;
 	}

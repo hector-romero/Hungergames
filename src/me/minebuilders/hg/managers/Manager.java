@@ -107,7 +107,7 @@ public class Manager {
 		ArrayList<Location> chests = arena.getChests();
 		for (Location l : chests) {
 			Block b = l.getBlock();
-			if (b.getType().equals(Material.CHEST)) {
+			if (b.getType().equals(Material.CHEST) || b.getType().equals(Material.TRAPPED_CHEST)) {
 				Inventory i = ((InventoryHolder)b.getState()).getInventory();
 				i.clear();
 				int c = rg.nextInt(Config.maxchestcontent) + 1;

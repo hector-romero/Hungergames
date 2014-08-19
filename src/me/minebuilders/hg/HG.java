@@ -4,24 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import me.minebuilders.hg.commands.AddSpawnCmd;
-import me.minebuilders.hg.commands.BaseCmd;
-import me.minebuilders.hg.commands.CreateCmd;
-import me.minebuilders.hg.commands.DebugCmd;
-import me.minebuilders.hg.commands.DeleteCmd;
-import me.minebuilders.hg.commands.JoinCmd;
-import me.minebuilders.hg.commands.KitCmd;
-import me.minebuilders.hg.commands.LeaveCmd;
-import me.minebuilders.hg.commands.ListCmd;
-import me.minebuilders.hg.commands.ListGamesCmd;
-import me.minebuilders.hg.commands.ReloadCmd;
-import me.minebuilders.hg.commands.SetExitCmd;
-import me.minebuilders.hg.commands.SetLobbyWallCmd;
-import me.minebuilders.hg.commands.StartCmd;
-import me.minebuilders.hg.commands.StopCmd;
-import me.minebuilders.hg.commands.TeamCmd;
-import me.minebuilders.hg.commands.ToggleCmd;
-import me.minebuilders.hg.commands.WandCmd;
+import me.minebuilders.hg.commands.*;
 import me.minebuilders.hg.data.Data;
 import me.minebuilders.hg.data.RandomItems;
 import me.minebuilders.hg.listeners.CancelListener;
@@ -74,7 +57,7 @@ public class HG extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new CancelListener(this), this);
 		getServer().getPluginManager().registerEvents(new GameListener(this), this);
 		loadCmds();
-		Util.log("Hugergames has been enabled!");
+		Util.log("Hugergames ha sido habilitado!");
 	}
 	
 	@Override
@@ -87,7 +70,7 @@ public class HG extends JavaPlugin {
 		kit = null;
 		ism = null;
 		ri = null;
-		Util.log("Hugergames has been disabled!");
+		Util.log("Hugergames ha sido deshabilitado!");
 	}
 
 	public void loadCmds() {
@@ -108,6 +91,7 @@ public class HG extends JavaPlugin {
 		cmds.put("toggle", new ToggleCmd());
 		cmds.put("setexit", new SetExitCmd());
 		cmds.put("delete", new DeleteCmd());
+		cmds.put("save", new SaveCmd());
 
 
 		for (String bc : cmds.keySet())

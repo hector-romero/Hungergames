@@ -19,8 +19,8 @@ public class Team {
 	
 	public void invite(Player p) {
 		Util.scm(p, "&6*&b&m                                                                             &6*");
-		Util.scm(p, "| &f" + leader + " &3Just invited you to a &fTeam&3!");
-		Util.scm(p, "| &3Type &f/hg team accept &3To join!");
+		Util.scm(p, "| &f" + leader + " &3Te ha invitado a su &fEquipo&3!");
+		Util.scm(p, "| &3Escribe &f/hg team accept &3para unirte!");
 		Util.scm(p, "&6*&b&m                                                                             &6*");
 		pending.add(p.getName());
 	}
@@ -28,7 +28,7 @@ public class Team {
 	public void acceptInvite(Player p) {
 		pending.remove(p.getName());
 		players.add(p.getName());
-		Util.msg(p, "&3You successfully joined this team!");
+		Util.msg(p, "&3Te has unido al equipo!");
 	}
 	
 	public boolean isOnTeam(String p) {

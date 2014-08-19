@@ -22,19 +22,19 @@ public class SBDisplay {
 	public SBDisplay(Game g) {
 		this.manager = Bukkit.getScoreboardManager();
 		this.board = manager.getNewScoreboard();
-		this.ob = board.registerNewObjective(ChatColor.GREEN + "Players-Alive:", "dummy");
+		this.ob = board.registerNewObjective(ChatColor.GREEN + "Jugadores con vida:", "dummy");
 		this.ob.setDisplaySlot(DisplaySlot.SIDEBAR);
 		this.ob.setDisplayName(ChatColor.BLUE + "" + ChatColor.BOLD + "HungerGames");
 		this.g = g;
 	}
 
 	public void setAlive() {
-		Score score = ob.getScore(Bukkit.getOfflinePlayer(ChatColor.GREEN + "Players-Alive:")); 
+		Score score = ob.getScore(Bukkit.getOfflinePlayer(ChatColor.GREEN + "Jugadores con vida:"));
 		score.setScore(g.getPlayers().size());
 	}
 
 	public void resetAlive() {
-		board.resetScores(Bukkit.getOfflinePlayer(ChatColor.GREEN + "Players-Alive:"));
+		board.resetScores(Bukkit.getOfflinePlayer(ChatColor.GREEN + "Jugadores con vida:"));
 		score.clear();
 	}
 

@@ -69,8 +69,8 @@ public class GameListener implements Listener {
 				Player p = Bukkit.getPlayer(r);
 				if (p != null) {
 					Util.scm(p,"&a&l[]------------------------------------------[]");
-					Util.scm(p, "&a&l |&3&l   You have been given a player-tracking stick! &a&l |");
-					Util.scm(p, "&a&l |&3&l   Swing the stick to track players!                &a&l |");
+					Util.scm(p, "&a&l |&3&l   Has recibido un palito de tracking ! &a&l |");
+					Util.scm(p, "&a&l |&3&l   Sacude el palito para encontrar jugadores!      &a&l |");
 					Util.scm(p,"&a&l[]------------------------------------------[]");
 					p.getInventory().addItem(trackingStick);
 				}
@@ -247,7 +247,7 @@ public class GameListener implements Listener {
 						if (p.getItemInHand().getType() == Material.AIR) {
 							game.join(p);
 						} else {
-							Util.msg(p, ChatColor.RED + "Click en el cartel con la mano!");
+							Util.msg(p, ChatColor.RED + "No debes tener nada en la mano!");
 						}
 					}
 				} 
@@ -286,7 +286,7 @@ public class GameListener implements Listener {
 					return;
 				}
 			} else if (p.hasPermission("hg.create") && HG.manager.getGame(b.getLocation()).getStatus() != Status.RUNNING) {
-				if (b.getType() == Material.CHEST) {
+				if (b.getType() == Material.CHEST || b.getType() == Material.TRAPPED_CHEST ) {
 					HG.manager.getGame(b.getLocation()).addChests(b.getLocation());
 				}
 			} else {
